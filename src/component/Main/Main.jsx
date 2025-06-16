@@ -56,7 +56,7 @@ const Main = () => {
               <p>Compare AI models side-by-side</p>
             </div>
 
-            <div className="cards">
+            {/* <div className="cards">
               <div className="card">
                 <p>Compare React vs Angular frameworks</p>
                 <img src={assets.code_icon} alt="code" />
@@ -73,7 +73,7 @@ const Main = () => {
                 <p>Machine learning vs deep learning</p>
                 <img src={assets.message_icon} alt="message" />
               </div>
-            </div>
+            </div> */}
           </>
         ) : (
           <div className="result">
