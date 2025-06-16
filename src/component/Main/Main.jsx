@@ -22,14 +22,12 @@ const Main = () => {
   const geminiRef = useRef(null);
   const deepseekRef = useRef(null);
 
-  // Auto-focus input
   useEffect(() => {
     if (!geminiLoading && !deepseekLoading && inputRef.current) {
       inputRef.current.focus();
     }
   }, [geminiLoading, deepseekLoading]);
 
-  // Auto-scroll responses
   useEffect(() => {
     if (geminiRef.current) {
       geminiRef.current.scrollTop = geminiRef.current.scrollHeight;
@@ -56,24 +54,7 @@ const Main = () => {
               <p>Compare AI models side-by-side</p>
             </div>
 
-            {/* <div className="cards">
-              <div className="card">
-                <p>Compare React vs Angular frameworks</p>
-                <img src={assets.code_icon} alt="code" />
-              </div>
-              <div className="card">
-                <p>Python vs JavaScript for web development</p>
-                <img src={assets.bulb_icon} alt="bulb" />
-              </div>
-              <div className="card">
-                <p>Cloud services: AWS vs Azure vs GCP</p>
-                <img src={assets.compass_icon} alt="compass" />
-              </div>
-              <div className="card">
-                <p>Machine learning vs deep learning</p>
-                <img src={assets.message_icon} alt="message" />
-              </div>
-            </div> */}
+           
           </>
         ) : (
           <div className="result">
@@ -105,7 +86,6 @@ const Main = () => {
                 </div>
               </div>
 
-              {/* DeepSeek Column */}
               <div className="model-column">
                 <div className="model-header">
                   <img src={assets.deepseek_icon} alt="deepseek" />
@@ -137,7 +117,7 @@ const Main = () => {
               onChange={(e) => setInput(e.target.value)}
               value={input}
               type="text"
-              placeholder="Enter a prompt to compare AI models"
+              placeholder="Enter a prompt to compare AI models. Press Cmd/Ctrl + Enter to send message"
               disabled={geminiLoading || deepseekLoading}
               onKeyDown={(e) => {
                 if (
