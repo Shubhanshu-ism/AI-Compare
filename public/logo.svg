@@ -1,0 +1,33 @@
+<svg width="192" height="192" viewBox="0 0 192 192" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="aiGradientEnhanced" x1="0" y1="0" x2="192" y2="0" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#6C5CE7"/>
+      <stop offset="1" stop-color="#00CEC9"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Left Chip Block -->
+  <rect x="24" y="48" width="56" height="96" rx="16" stroke="url(#aiGradientEnhanced)" stroke-width="6" fill="none"/>
+  <!-- Right Chip Block -->
+  <rect x="112" y="48" width="56" height="96" rx="16" stroke="url(#aiGradientEnhanced)" stroke-width="6" fill="none"/>
+
+  <!-- Neural Dots - Left Chip (more prominent, grid-like) -->
+  <circle cx="40" cy="72" r="7" fill="url(#aiGradientEnhanced)" />
+  <circle cx="64" cy="72" r="7" fill="url(#aiGradientEnhanced)" />
+  <circle cx="40" cy="96" r="7" fill="url(#aiGradientEnhanced)" />
+  <circle cx="64" cy="96" r="7" fill="url(#aiGradientEnhanced)" />
+  <circle cx="40" cy="120" r="7" fill="url(#aiGradientEnhanced)" />
+  <circle cx="64" cy="120" r="7" fill="url(#aiGradientEnhanced)" />
+
+  <!-- Neural Dots - Right Chip (more prominent, grid-like) -->
+  <circle cx="128" cy="72" r="7" fill="url(#aiGradientEnhanced)" />
+  <circle cx="152" cy="72" r="7" fill="url(#aiGradientEnhanced)" />
+  <circle cx="128" cy="96" r="7" fill="url(#aiGradientEnhanced)" />
+  <circle cx="152" cy="96" r="7" fill="url(#aiGradientEnhanced)" />
+  <circle cx="128" cy="120" r="7" fill="url(#aiGradientEnhanced)" />
+  <circle cx="152" cy="120" r="7" fill="url(#aiGradientEnhanced)" />
+
+  <!-- Central Comparison Element (stylized arrow pointing both ways) -->
+  <path d="M96 48 L96 144 M96 60 L80 76 M96 60 L112 76 M96 132 L80 116 M96 132 L112 116"
+        stroke="url(#aiGradientEnhanced)" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>
