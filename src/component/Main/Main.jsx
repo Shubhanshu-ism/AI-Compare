@@ -109,7 +109,7 @@ const Main = () => {
               <div className="model-column">
                 <div className="model-header">
                   <img src={assets.deepseek_icon} alt="deepseek" />
-                  <span>DeepSeek-R1</span>
+                  <span>DeepSeek</span>
                   {deepseekLoading && <div className="pulse-dot"></div>}
                 </div>
                 <div className="model-data" ref={deepseekRef}>
