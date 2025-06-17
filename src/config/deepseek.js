@@ -9,9 +9,11 @@ const openai = new OpenAI({
 
 export default async function runDeepSeek(history, newPrompt, callback) {
   try {
+    const modifiedPrompt = `Answer "${newPrompt}" in a concise, friendly way. Use relatable analogies or examples when they make things clearer. Keep it conversational, helpful, and light-hearted - no need for lengthy explanations unless absolutely necessary!`;
+
     const response = await openai.chat.completions.create({
-      model: "deepseek/deepseek-r1:free", 
-      messages: [...history, { role: "user", content: newPrompt }],
+      model: "deepseek/deepseek-r1:free",
+      messages: [...history, { role: "user", content: modifiedPrompt }],
       stream: true,
     });
 

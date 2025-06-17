@@ -22,11 +22,38 @@ const Main = () => {
   const geminiRef = useRef(null);
   const deepseekRef = useRef(null);
 
+  // Function to handle sending with immediate input clearing
+  const handleSend = () => {
+    if (input.trim() && !geminiLoading && !deepseekLoading) {
+      const currentInput = input;
+      setInput(""); // Clear input immediately
+      onSent(currentInput); // Send the stored input value
+    }
+  };
+
+  // Auto-resize textarea based on content
+  const handleInputChange = (e) => {
+    setInput(e.target.value);
+
+    // Auto-resize textarea
+    if (inputRef.current) {
+      inputRef.current.style.height = "auto";
+      inputRef.current.style.height = `${Math.min(
+        inputRef.current.scrollHeight,
+        200
+      )}px`;
+    }
+  };
+
   useEffect(() => {
     if (!geminiLoading && !deepseekLoading && inputRef.current) {
       inputRef.current.focus();
+      // Reset height when clearing input
+      if (!input) {
+        inputRef.current.style.height = "auto";
+      }
     }
-  }, [geminiLoading, deepseekLoading]);
+  }, [geminiLoading, deepseekLoading, input]);
 
   useEffect(() => {
     if (geminiRef.current) {
@@ -53,8 +80,6 @@ const Main = () => {
               </p>
               <p>Compare AI models side-by-side</p>
             </div>
-
-           
           </>
         ) : (
           <div className="result">
@@ -112,33 +137,27 @@ const Main = () => {
 
         <div className="main-bottom">
           <div className="search-box">
-            <input
+            <textarea
               ref={inputRef}
-              onChange={(e) => setInput(e.target.value)}
+              onChange={handleInputChange}
               value={input}
-              type="text"
               placeholder="Enter a prompt to compare AI models. Press Cmd/Ctrl + Enter to send message"
               disabled={geminiLoading || deepseekLoading}
+              rows={1}
               onKeyDown={(e) => {
-                if (
-                  e.key === "Enter" &&
-                  input.trim() &&
-                  !geminiLoading &&
-                  !deepseekLoading
-                ) {
-                  onSent();
+                // Trigger on Command+Enter (Mac) or Control+Enter (Windows/Linux)
+                if (e.key === "Enter" && (e.metaKey || e.ctrlKey)) {
+                  e.preventDefault(); // Prevent default Enter behavior
+                  handleSend();
                 }
+                // Allow normal Enter for new lines
               }}
             />
             <div>
               <img src={assets.gallery_icon} alt="gallery" />
               <img src={assets.mic_icon} alt="mic" />
               {input.trim() && !geminiLoading && !deepseekLoading && (
-                <img
-                  onClick={() => onSent()}
-                  src={assets.send_icon}
-                  alt="send"
-                />
+                <img onClick={handleSend} src={assets.send_icon} alt="send" />
               )}
             </div>
           </div>

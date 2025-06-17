@@ -15,8 +15,9 @@ async function runGemini(history, newPrompt, callback) {
         parts: msg.parts,
       })),
     });
+    const modifiedPrompt = `Answer "${newPrompt}" in a concise, friendly way. Use relatable analogies or examples when they make things clearer. Keep it conversational, helpful, and light-hearted - no need for lengthy explanations unless absolutely necessary!`;
 
-    const result = await chat.sendMessageStream(newPrompt);
+    const result = await chat.sendMessageStream(modifiedPrompt);
     let fullResponse = "";
 
     for await (const chunk of result.stream) {

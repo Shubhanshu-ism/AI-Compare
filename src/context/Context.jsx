@@ -48,6 +48,67 @@ const ContextProvider = (props) => {
     setInput("");
   };
 
+  // const onSent = async (prompt) => {
+  //   const currentPrompt = prompt || input;
+  //   if (!currentPrompt.trim()) return;
+
+  //   // Reset states
+  //   setGeminiData("");
+  //   setDeepseekData("");
+  //   setGeminiLoading(true);
+  //   setDeepseekLoading(true);
+  //   setShowResult(true);
+  //   setRecentPrompt(currentPrompt);
+
+  //   try {
+  //     const newHistory = [...conversationHistory];
+
+  //     // Add user message
+  //     newHistory.push({
+  //       role: "user",
+  //       parts: [{ text: currentPrompt }],
+  //     });
+
+  //     // Run both models in parallel
+  //     await Promise.all([
+  //       runGemini(newHistory, currentPrompt, (token) =>
+  //         setGeminiData((prev) => prev + token)
+  //       ).then((fullResponse) => {
+  //         newHistory.push({
+  //           role: "model-gemini",
+  //           parts: [{ text: fullResponse }],
+  //         });
+  //       }),
+
+  //       runDeepSeek(newHistory, currentPrompt, (token) =>
+  //         setDeepseekData((prev) => prev + token)
+  //       ).then((fullResponse) => {
+  //         newHistory.push({
+  //           role: "model-deepseek",
+  //           parts: [{ text: fullResponse }],
+  //         });
+  //       }),
+  //     ]);
+
+  //     setConversationHistory(newHistory);
+
+  //     // Add to recent prompts
+  //     if (!prompt) {
+  //       setPrevPrompts((prev) => [...prev, currentPrompt]);
+  //     }
+  //   } catch (error) {
+  //     console.error("API Error:", error);
+  //     if (error.source === "gemini") {
+  //       setGeminiData("⚠️ Gemini Error: " + error.message);
+  //     } else {
+  //       setDeepseekData("⚠️ DeepSeek Error: " + error.message);
+  //     }
+  //   } finally {
+  //     setGeminiLoading(false);
+  //     setDeepseekLoading(false);
+  //     setInput("");
+  //   }
+  // };
   const onSent = async (prompt) => {
     const currentPrompt = prompt || input;
     if (!currentPrompt.trim()) return;
@@ -60,56 +121,40 @@ const ContextProvider = (props) => {
     setShowResult(true);
     setRecentPrompt(currentPrompt);
 
-    try {
-      const newHistory = [...conversationHistory];
+    const newHistory = [...conversationHistory];
+    newHistory.push({
+      role: "user",
+      parts: [{ text: currentPrompt }],
+    });
 
-      // Add user message
-      newHistory.push({
-        role: "user",
-        parts: [{ text: currentPrompt }],
+    // Run models independently, not in Promise.all()
+    runGemini(newHistory, currentPrompt, (token) =>
+      setGeminiData((prev) => prev + token)
+    )
+      .then((fullResponse) => {
+        setGeminiLoading(false);
+        // Update history for Gemini when complete
+      })
+      .catch((error) => {
+        setGeminiLoading(false);
+        setGeminiData("⚠️ Gemini Error: " + error.message);
       });
 
-      // Run both models in parallel
-      await Promise.all([
-        runGemini(newHistory, currentPrompt, (token) =>
-          setGeminiData((prev) => prev + token)
-        ).then((fullResponse) => {
-          newHistory.push({
-            role: "model-gemini",
-            parts: [{ text: fullResponse }],
-          });
-        }),
-
-        runDeepSeek(newHistory, currentPrompt, (token) =>
-          setDeepseekData((prev) => prev + token)
-        ).then((fullResponse) => {
-          newHistory.push({
-            role: "model-deepseek",
-            parts: [{ text: fullResponse }],
-          });
-        }),
-      ]);
-
-      setConversationHistory(newHistory);
-
-      // Add to recent prompts
-      if (!prompt) {
-        setPrevPrompts((prev) => [...prev, currentPrompt]);
-      }
-    } catch (error) {
-      console.error("API Error:", error);
-      if (error.source === "gemini") {
-        setGeminiData("⚠️ Gemini Error: " + error.message);
-      } else {
+    runDeepSeek(newHistory, currentPrompt, (token) =>
+      setDeepseekData((prev) => prev + token)
+    )
+      .then((fullResponse) => {
+        setDeepseekLoading(false);
+        // Update history for DeepSeek when complete
+      })
+      .catch((error) => {
+        setDeepseekLoading(false);
         setDeepseekData("⚠️ DeepSeek Error: " + error.message);
-      }
-    } finally {
-      setGeminiLoading(false);
-      setDeepseekLoading(false);
-      setInput("");
-    }
-  };
+      });
 
+    setInput("");
+  };
+  
   const contextValue = {
     prevPrompts,
     setPrevPrompts,
