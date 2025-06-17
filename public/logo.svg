@@ -1,33 +1,35 @@
-<svg width="192" height="192" viewBox="0 0 192 192" fill="none" xmlns="http://www.w3.org/2000/svg">
-  <defs>
-    <linearGradient id="aiGradientEnhanced" x1="0" y1="0" x2="192" y2="0" gradientUnits="userSpaceOnUse">
-      <stop stop-color="#6C5CE7"/>
-      <stop offset="1" stop-color="#00CEC9"/>
-    </linearGradient>
-  </defs>
+<svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Left Chip Block - White outline with black inner stroke -->
+  <rect x="2" y="8" width="18" height="32" rx="4" stroke="white" stroke-width="3" fill="transparent"/>
+  <rect x="2" y="8" width="18" height="32" rx="4" stroke="black" stroke-width="1.5" fill="transparent"/>
+  
+  <!-- Right Chip Block - White outline with black inner stroke -->
+  <rect x="28" y="8" width="18" height="32" rx="4" stroke="white" stroke-width="3" fill="transparent"/>
+  <rect x="28" y="8" width="18" height="32" rx="4" stroke="black" stroke-width="1.5" fill="transparent"/>
 
-  <!-- Left Chip Block -->
-  <rect x="24" y="48" width="56" height="96" rx="16" stroke="url(#aiGradientEnhanced)" stroke-width="6" fill="none"/>
-  <!-- Right Chip Block -->
-  <rect x="112" y="48" width="56" height="96" rx="16" stroke="url(#aiGradientEnhanced)" stroke-width="6" fill="none"/>
+  <!-- Left Chip - Alternating Black and White Lines -->
+  <line x1="5" y1="14" x2="17" y2="14" stroke="white" stroke-width="3"/>
+  <line x1="5" y1="14" x2="17" y2="14" stroke="black" stroke-width="6.5"/>
+  <line x1="5" y1="20" x2="17" y2="20" stroke="black" stroke-width="7"/>
+  <line x1="5" y1="19" x2="17" y2="19" stroke="white" stroke-width="5"/>
+  <line x1="5" y1="26" x2="17" y2="26" stroke="white" stroke-width="3"/>
+  <line x1="5" y1="26" x2="17" y2="26" stroke="black" stroke-width="6"/>
+  <line x1="5" y1="36" x2="17" y2="36" stroke="black" stroke-width="5"/>
+  <line x1="5" y1="32" x2="17" y2="32" stroke="white" stroke-width="3"/>
 
-  <!-- Neural Dots - Left Chip (more prominent, grid-like) -->
-  <circle cx="40" cy="72" r="7" fill="url(#aiGradientEnhanced)" />
-  <circle cx="64" cy="72" r="7" fill="url(#aiGradientEnhanced)" />
-  <circle cx="40" cy="96" r="7" fill="url(#aiGradientEnhanced)" />
-  <circle cx="64" cy="96" r="7" fill="url(#aiGradientEnhanced)" />
-  <circle cx="40" cy="120" r="7" fill="url(#aiGradientEnhanced)" />
-  <circle cx="64" cy="120" r="7" fill="url(#aiGradientEnhanced)" />
+  <!-- Right Chip - Same as Left Chip -->
+  <line x1="31" y1="14" x2="43" y2="14" stroke="white" stroke-width="3"/>
+  <line x1="31" y1="14" x2="43" y2="14" stroke="black" stroke-width="6.5"/>
+  <line x1="31" y1="20" x2="43" y2="20" stroke="black" stroke-width="7"/>
+  <line x1="31" y1="19" x2="43" y2="19" stroke="white" stroke-width="5"/>
+  <line x1="31" y1="26" x2="43" y2="26" stroke="white" stroke-width="3"/>
+  <line x1="31" y1="26" x2="43" y2="26" stroke="black" stroke-width="6"/>
+  <line x1="31" y1="36" x2="43" y2="36" stroke="black" stroke-width="5"/>
+  <line x1="31" y1="32" x2="43" y2="32" stroke="white" stroke-width="3"/>
 
-  <!-- Neural Dots - Right Chip (more prominent, grid-like) -->
-  <circle cx="128" cy="72" r="7" fill="url(#aiGradientEnhanced)" />
-  <circle cx="152" cy="72" r="7" fill="url(#aiGradientEnhanced)" />
-  <circle cx="128" cy="96" r="7" fill="url(#aiGradientEnhanced)" />
-  <circle cx="152" cy="96" r="7" fill="url(#aiGradientEnhanced)" />
-  <circle cx="128" cy="120" r="7" fill="url(#aiGradientEnhanced)" />
-  <circle cx="152" cy="120" r="7" fill="url(#aiGradientEnhanced)" />
-
-  <!-- Central Comparison Element (stylized arrow pointing both ways) -->
-  <path d="M96 48 L96 144 M96 60 L80 76 M96 60 L112 76 M96 132 L80 116 M96 132 L112 116"
-        stroke="url(#aiGradientEnhanced)" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/>
+  <!-- Central Arrow - Dual color for visibility -->
+  <path d="M24 8 L24 40 M24 12 L20 16 M24 12 L28 16 M24 36 L20 32 M24 36 L28 32"
+        stroke="white" stroke-width="4" stroke-linecap="round"/>
+  <path d="M24 8 L24 40 M24 12 L20 16 M24 12 L28 16 M24 36 L20 32 M24 36 L28 32"
+        stroke="black" stroke-width="2" stroke-linecap="round"/>
 </svg>
