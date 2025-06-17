@@ -473,3 +473,86 @@
     min-height: 200px;
   }
 }
+
+/* User Prompt Styling */
+.user-prompt {
+  flex: 1;
+  margin-left: var(--space-sm);
+}
+
+.user-prompt .markdown-response,
+.user-prompt p {
+  margin: 0;
+  color: var(--text-secondary);
+  font-weight: 500;
+  white-space: pre-wrap; /* Preserve whitespace and line breaks */
+  word-wrap: break-word;
+  max-width: 100%;
+}
+
+/* Enhanced streaming indicator */
+.typing-cursor {
+  display: inline-block;
+  background-color: var(--primary-blue);
+  width: 2px;
+  height: 1em;
+  margin-left: 2px;
+  animation: blink 1s infinite;
+}
+
+@keyframes blink {
+  0%, 50% { opacity: 1; }
+  51%, 100% { opacity: 0; }
+}
+
+/* Result title layout adjustment */
+.result-title {
+  margin: var(--space-2xl) 0;
+  display: flex;
+  align-items: flex-start; /* Changed from center to flex-start */
+  gap: var(--space-lg);
+}
+
+.result-title img {
+  width: 40px;
+  border-radius: var(--radius-full);
+  flex-shrink: 0; /* Prevent image from shrinking */
+  margin-top: 2px; /* Slight adjustment for alignment */
+}
+
+/* Handle code blocks and preformatted text in user prompt */
+.user-prompt pre {
+  background-color: var(--background-light);
+  padding: var(--space-sm);
+  border-radius: var(--radius-sm);
+  overflow-x: auto;
+  font-size: 0.9em;
+  margin: var(--space-xs) 0;
+}
+
+.user-prompt code {
+  background-color: var(--background-light);
+  padding: 2px 4px;
+  border-radius: 3px;
+  font-size: 0.9em;
+}
+
+.user-prompt pre code {
+  background: none;
+  padding: 0;
+}
+
+/* Responsive adjustments */
+@media (max-width: 600px) {
+  .result-title {
+    gap: var(--space-sm);
+  }
+  
+  .result-title img {
+    width: 32px;
+  }
+  
+  .user-prompt {
+    margin-left: var(--space-xs);
+  }
+}

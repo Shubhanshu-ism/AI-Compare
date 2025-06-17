@@ -85,7 +85,11 @@ const Main = () => {
           <div className="result">
             <div className="result-title">
               <img src={assets.user_icon} alt="user" />
-              <p>{recentPrompt}</p>
+              <div className="user-prompt">
+                <ReactMarkdown remarkPlugins={[remarkGfm]}>
+                  {recentPrompt}
+                </ReactMarkdown>
+              </div>
             </div>
 
             <div className="model-comparison">
@@ -97,7 +101,7 @@ const Main = () => {
                   {geminiLoading && <div className="pulse-dot"></div>}
                 </div>
                 <div className="model-data" ref={geminiRef}>
-                  {geminiLoading ? (
+                  {geminiLoading && geminiData === "" ? (
                     <div className="stream-loader">
                       <div className="dot-flashing"></div>
                     </div>
@@ -106,6 +110,9 @@ const Main = () => {
                       <ReactMarkdown remarkPlugins={[remarkGfm]}>
                         {geminiData}
                       </ReactMarkdown>
+                      {geminiLoading && (
+                        <span className="typing-cursor">|</span>
+                      )}
                     </div>
                   )}
                 </div>
@@ -118,7 +125,7 @@ const Main = () => {
                   {deepseekLoading && <div className="pulse-dot"></div>}
                 </div>
                 <div className="model-data" ref={deepseekRef}>
-                  {deepseekLoading ? (
+                  {deepseekLoading && deepseekData === "" ? (
                     <div className="stream-loader">
                       <div className="dot-flashing"></div>
                     </div>
@@ -127,6 +134,9 @@ const Main = () => {
                       <ReactMarkdown remarkPlugins={[remarkGfm]}>
                         {deepseekData}
                       </ReactMarkdown>
+                      {deepseekLoading && (
+                        <span className="typing-cursor">|</span>
+                      )}
                     </div>
                   )}
                 </div>
@@ -154,8 +164,8 @@ const Main = () => {
               }}
             />
             <div>
-              <img src={assets.gallery_icon} alt="gallery" />
-              <img src={assets.mic_icon} alt="mic" />
+              {/* <img src={assets.gallery_icon} alt="gallery" />
+              <img src={assets.mic_icon} alt="mic" /> */}
               {input.trim() && !geminiLoading && !deepseekLoading && (
                 <img onClick={handleSend} src={assets.send_icon} alt="send" />
               )}
