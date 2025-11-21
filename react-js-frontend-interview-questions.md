@@ -3801,7 +3801,7 @@ function useCustomHook() {
 
 ---
 
-## React Performance & Advanced
+## React Performance Advanced
 
 ### 75. **How to optimize React application performance?**
 
@@ -5331,7 +5331,7 @@ const [lat, lng] = getCoordinates();
 
 ---
 
-## CSS & Layout
+## CSS Layout
 
 ### 111. **What is the difference between Flexbox and Grid?**
 
@@ -5588,7 +5588,7 @@ html {
 
 ---
 
-## API & Data Fetching
+## API Data Fetching
 
 ### 117. **What is the difference between fetch and axios?**
 
@@ -5877,7 +5877,7 @@ app.use(cors({
 
 ---
 
-## Testing & Error Handling
+## Testing Error Handling
 
 ### 122. **What is unit testing in JavaScript?**
 
