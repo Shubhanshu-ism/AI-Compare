@@ -8,7 +8,7 @@ async function runGemini(history, newPrompt, callback) {
  try {
    // Updated to the latest Flash model (Gemini 2.5)
    const model = genAI.getGenerativeModel({
-     model: "gemini-2.5-pro",
+     model: "gemini-2.5-flash-lite",
      generationConfig: { maxOutputTokens: 4000 },
    });
 
