@@ -14,7 +14,7 @@ async function runGemini(history, newPrompt, callback) {
 
 
    const chat = model.startChat({
-     history: history.map((msg) => ({2222
+     history: history.map((msg) => ({
        role: msg.role === "user" ? "user" : "model",
        parts: msg.parts,
      })),
