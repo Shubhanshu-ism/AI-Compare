@@ -8,13 +8,13 @@ async function runGemini(history, newPrompt, callback) {
  try {
    // Updated to the latest Flash model (Gemini 2.5)
    const model = genAI.getGenerativeModel({
-     model: "gemini-2.5-flash",
+     model: "gemini-2.5-pro",
      generationConfig: { maxOutputTokens: 4000 },
    });
 
 
    const chat = model.startChat({
-     history: history.map((msg) => ({
+     history: history.map((msg) => ({2222
        role: msg.role === "user" ? "user" : "model",
        parts: msg.parts,
      })),
