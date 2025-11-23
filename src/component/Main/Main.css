@@ -398,6 +398,9 @@
 
 /* Media Queries - Optimized */
 @media (min-width: 1400px) {
+  .main-container {
+    max-width: 80vw;
+  }
   .model-data {
     padding: var(--space-xl);
   }
